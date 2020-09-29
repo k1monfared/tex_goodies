@@ -1,0 +1,34 @@
+\documentclass[]{article}
+
+\usepackage[top=1.5cm, left = 1.5cm,right=1.5cm,bottom=1cm]{geometry}
+\usepackage{tikz}
+
+\newcommand{\cellheight}{\textwidth/3}
+\pagestyle{empty}
+\begin{document}
+
+\centering
+%Month \rule{3cm}{1pt}\\[1cm]
+
+\begin{tikzpicture}
+
+	
+	\foreach \s/\D/\e in {0/Today/-3,-3/Tomorrow/-5,-5/Overmorrow/-6 ,-6/Later/-7}
+	{	
+		\draw[gray, very thin] (0,\s*\textheight/7-.2em) grid (2*\cellheight-.2em,\e*\textheight/7+.2em); 
+		\draw[rounded corners, very thick] (0,\s*\textheight/7-.2em) rectangle (2*\cellheight-.2em,\e*\textheight/7+.2em); 
+		\node[rotate=-90,anchor=west,gray] () at (2*\cellheight-15, \s*\textheight/7-.2em) {{\Large \sc \D}};
+%		\foreach \y in {1,...,\cellheight}
+%		{
+%			\draw[gray] (\s*\linewidth/7+.5em,\y) -- (\e*\linewidth/7-.5em,\y);
+%		}
+	}
+	
+	\draw[gray, very thin] (2*\cellheight+.2em,-.2em) grid (3*\cellheight,-\textheight+.2em); 
+	\draw[rounded corners, very thick] (2*\cellheight+.2em,-.2em) rectangle (3*\cellheight,-\textheight+.2em); 
+	\node[rotate=-90,anchor=west,gray] () at (3*\cellheight-15,-.2em) {{\Large \sc Notes}};
+
+\end{tikzpicture}
+
+
+\end{document}
